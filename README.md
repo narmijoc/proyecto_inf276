@@ -1,5 +1,7 @@
 # proyecto_inf276 - Sistema integrado captura de datos borde costero - UTFSM
-Documentación Código del Módulo Captura de Datos Borde Costero
+Documentación Código del Módulo Captura de Datos Borde Costero.
+
+Para ello hemos creado la siguiente [Wiki]{https://github.com/narmijoc/proyecto_inf276/wiki} donde exite documentación sobre el hardware y software utilizado.
 
 *Integrantes*
 
