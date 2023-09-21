@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="MainActivity"
+    android:orientation="vertical"
+    >
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listDeviceBluetooth"
+        android:visibility="visible"
+
+        tools:visibility="gone">
+        >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/viewConn"
+        android:visibility="gone"
+
+        tools:visibility="visible"
+        >
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtTx"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            >
+        </EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonSend"
+            android:text="Send A"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            >
+        </Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/consola"
+            >
+        </TextView>
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Temperatura_sonda"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/Temperatura_ambiente"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/presion"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/humedad"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/altitud"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/uv"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:text="TextView" />
+
+
+</LinearLayout>
