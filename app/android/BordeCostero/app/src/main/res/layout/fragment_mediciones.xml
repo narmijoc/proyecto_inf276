@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedicionesFragment">
+
+
+    <TextView
+        android:id="@+id/medicionStatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Detenido" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckBox" />
+
+        <TextView
+            android:id="@+id/Temperatura_sonda"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Temperatura Sonda"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Temperatura_ambiente"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Temperatura Ambiente"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/presion"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Presión"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/humedad"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Humedad Ambiente"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/altitud"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Altitud"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/uv"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="UV"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Light"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Intensidad Lumínica"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Tenedor"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Humedad Suelo"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/TDS"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="ppm"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/txtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtLugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Lugar"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnIniciarMed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar" />
+
+        <Button
+            android:id="@+id/btnPararMed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parar" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckBox" />
+    </LinearLayout>
+
+
+</FrameLayout>
+

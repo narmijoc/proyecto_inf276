@@ -1,109 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MainActivity"
+    android:backgroundTint="#E60808"
     android:orientation="vertical"
-    >
+    tools:context=".MainActivity">
 
-    <ListView
+
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listDeviceBluetooth"
-        android:visibility="visible"
+        android:layout_height="match_parent" />
 
-        tools:visibility="gone">
-        >
-    </ListView>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/viewConn"
-        android:visibility="gone"
+        android:layout_height="match_parent">
 
-        tools:visibility="visible"
-        >
-        >
-
-        <EditText
+        <FrameLayout
+            android:id="@+id/frameContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edtTx"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            >
-        </EditText>
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonSend"
-            android:text="Send A"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            >
-        </Button>
+
+            <LinearLayout
+                android:id="@+id/lista_btn_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dp"
+                android:backgroundTint="#FF0000"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <ListView
+                    android:id="@+id/listDeviceBluetooth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+
+                <Button
+                    android:id="@+id/btn_conectar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Conectar dispositivo" />
+
+                <Button
+                    android:id="@+id/btn_tomar_medicion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tomar Mediciones" />
+
+                <Button
+                    android:id="@+id/bt_mediciones_realizadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mediciones Realizadas" />
+
+                <Button
+                    android:id="@+id/btnDesconectarDisp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#EC0F0F"
+                    android:text="Desconectar dispositivo" />
+
+
+            </LinearLayout>
+        </FrameLayout>
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tvStatusConection"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:id="@+id/consola"
-            >
-        </TextView>
+            android:layout_marginTop="16dp"
+            android:text="Desconectado"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer">
+
+    </com.google.android.material.navigation.NavigationView>
 
 
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/Temperatura_sonda"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/Temperatura_ambiente"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/presion"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/humedad"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/altitud"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/uv"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        android:text="TextView" />
-
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
