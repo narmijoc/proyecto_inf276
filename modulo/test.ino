@@ -232,13 +232,15 @@ void loop() {
   Serial.print("Light: ");
   Serial.print(lux);
   Serial.println(" lux");
-
+  // Convert lux to float
+  float luxFloat = static_cast<float>(lux) /1.0; // Assuming lux is in hundredths
+  Serial.println(luxFloat);
 
   //Sensor tenedor
    //get the reading from the function below and print it
-  Serial.print("Analog output: ");
-  Serial.println(readSensor());
-
+  //Serial.print("Analog output: ");
+  //Serial.println(readSensor());
+  float tenedorData = readSensor();
 
   //sensor ppm
   sensors.requestTemperatures();
@@ -264,22 +266,22 @@ void loop() {
     float compensationVolatge = averageVoltage / compensationCoefficient; //temperature compensation
     tdsValue = (133.42 * compensationVolatge * compensationVolatge * compensationVolatge - 255.86 * compensationVolatge * compensationVolatge + 857.39 * compensationVolatge) * 0.5; //convert voltage value to tds value
  
-    Serial.print("TDS Value:");
-    Serial.print(tdsValue, 0);
-    Serial.println("ppm");
+    //Serial.print("TDS Value:");
+    //Serial.print(tdsValue, 0);
+    //Serial.println("ppm");
  
 
-
+ }
   //Formato para enviar
   // Imprime los datos en una sola línea
-  char datos[100];
-  sprintf(datos, "Temp1:%.2f,Temp2:%.2f,Pres:%.2f,Humi:%.2f,Alt:%.2f,UV:%.2f", temp,temperature,pressure,humidity,altitude,uvIntensity);
+  char datos[150];
+  sprintf(datos, "tempSonda:%.2f,tempAmbiente:%.2f,presion:%.2f,humedadAmbiente:%.2f,altitud:%.2f,UV:%.2f,lightIntensity:%.2f,humedadSuelo:%.2f,ppm:%.2f", temp,temperature,pressure,humidity,altitude,uvIntensity,luxFloat,tenedorData,tdsValue);
   //Serial.println(datos);
   BTSerial.println(datos);
   //tiene que ser un println o no lo recibe la app, tiene que existir salto de linea
 
 
-  }
+ 
 }
 
 int getMedianNum(int bArray[], int iFilterLen)
