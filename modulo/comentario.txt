@@ -1,1 +1,1 @@
-se encontrará el código correspondiente al modulo esp-32 y sus sensores
+Se encontrará el código correspondiente al modulo esp-32 y sus sensores
