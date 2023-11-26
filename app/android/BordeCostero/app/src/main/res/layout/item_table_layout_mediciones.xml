@@ -12,30 +12,31 @@
         android:layout_height="wrap_content"
         android:text="100" />
 
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="nombre" />
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="nombre" />
 
-        <TextView
-            android:id="@+id/tvFecha"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="fecha" />
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="fecha" />
 
-        <TextView
-            android:id="@+id/tvLugar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="lugar" />
+    <TextView
+        android:id="@+id/tvLugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="lugar" />
 
-        <Button
-            android:id="@+id/btnExportar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exportar" />
+    <Button
+        android:id="@+id/btnExportar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="Exportar" />
     </TableRow>

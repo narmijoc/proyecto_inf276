@@ -8,13 +8,15 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         android:text="Mediciones realizadas" />
 
     <TableLayout
         android:id="@+id/tablaMedicioness"
         android:layout_width="370dp"
-        android:layout_height="589dp"
+        android:layout_height="673dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp">
 

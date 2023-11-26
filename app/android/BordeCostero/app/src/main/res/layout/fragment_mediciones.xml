@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,8 @@
     <TextView
         android:id="@+id/medicionStatus"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="Detenido" />
 
     <LinearLayout
@@ -19,88 +21,12 @@
         android:orientation="vertical">
 
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-
-        <TextView
-            android:id="@+id/Temperatura_sonda"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Temperatura Sonda"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/Temperatura_ambiente"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Temperatura Ambiente"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/presion"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Presión"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/humedad"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Humedad Ambiente"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/altitud"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Altitud"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/uv"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="UV"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/Light"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Intensidad Lumínica"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/Tenedor"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Humedad Suelo"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/TDS"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ppm"
-            android:textSize="20dp" />
-
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:ems="10"
             android:hint="Nombre"
             android:inputType="textPersonName" />
@@ -109,27 +35,205 @@
             android:id="@+id/txtLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:ems="10"
             android:hint="Lugar"
             android:inputType="textPersonName" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="474dp">
+
+            <CheckBox
+                android:id="@+id/cBox_humedad"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_presion" />
+
+            <CheckBox
+                android:id="@+id/cBox_presion"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbox_temperatura_ambiente" />
+
+            <CheckBox
+                android:id="@+id/cBox_TDS"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_humedad_suelo" />
+
+            <CheckBox
+                android:id="@+id/cBox_altitud"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_humedad" />
+
+            <CheckBox
+                android:id="@+id/cBox_uv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_altitud" />
+
+            <CheckBox
+                android:id="@+id/cBox_Light"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_uv" />
+
+            <CheckBox
+                android:id="@+id/cBox_humedad_suelo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_Light" />
+
+            <CheckBox
+                android:id="@+id/cbox_temperatura_ambiente"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cBox_temperatura_sonda" />
+
+            <CheckBox
+                android:id="@+id/cBox_temperatura_sonda"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Temperatura_sonda"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Temperatura Sonda"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_temperatura_sonda"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Temperatura_ambiente"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Temperatura Ambiente"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cbox_temperatura_ambiente"
+                app:layout_constraintTop_toBottomOf="@+id/Temperatura_sonda" />
+
+            <TextView
+                android:id="@+id/presion"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Presión"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_presion"
+                app:layout_constraintTop_toBottomOf="@+id/Temperatura_ambiente" />
+
+            <TextView
+                android:id="@+id/humedad"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Humedad Ambiente"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_humedad"
+                app:layout_constraintTop_toBottomOf="@+id/presion" />
+
+            <TextView
+                android:id="@+id/altitud"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Altitud"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_altitud"
+                app:layout_constraintTop_toBottomOf="@+id/humedad" />
+
+            <TextView
+                android:id="@+id/uv"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="UV"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_uv"
+                app:layout_constraintTop_toBottomOf="@+id/altitud" />
+
+            <TextView
+                android:id="@+id/Light"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Intensidad Lumínica"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_Light"
+                app:layout_constraintTop_toBottomOf="@+id/uv" />
+
+            <TextView
+                android:id="@+id/humedad_suelo"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Humedad Suelo"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_humedad_suelo"
+                app:layout_constraintTop_toBottomOf="@+id/Light" />
+
+            <TextView
+                android:id="@+id/TDS"
+                android:layout_width="347dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical|fill_vertical"
+                android:text="ppm"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/cBox_TDS"
+                app:layout_constraintTop_toBottomOf="@+id/humedad_suelo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btnIniciarMed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Iniciar" />
 
         <Button
             android:id="@+id/btnPararMed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Parar" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
     </LinearLayout>
 
 

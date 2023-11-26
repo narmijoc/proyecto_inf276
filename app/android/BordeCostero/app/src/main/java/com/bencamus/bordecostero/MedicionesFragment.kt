@@ -1,6 +1,5 @@
 package com.bencamus.bordecostero
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import com.ingenieriajhr.blujhr.BluJhr
@@ -38,6 +38,19 @@ class MedicionesFragment : Fragment() {
 
 
     private fun rxReceived() {
+        //todos los checkbox
+        val cBoxHumedad: CheckBox = rootView.findViewById(R.id.cBox_humedad)
+        val cBoxPresion: CheckBox = rootView.findViewById(R.id.cBox_presion)
+        val cBoxTDS: CheckBox = rootView.findViewById(R.id.cBox_TDS)
+        val cBoxAltitud: CheckBox = rootView.findViewById(R.id.cBox_altitud)
+        val cBoxUV: CheckBox = rootView.findViewById(R.id.cBox_uv)
+        val cBoxLight: CheckBox = rootView.findViewById(R.id.cBox_Light)
+        val cBoxHumedadSuelo: CheckBox = rootView.findViewById(R.id.cBox_humedad_suelo)
+        val cboxTemperaturaAmbiente: CheckBox = rootView.findViewById(R.id.cbox_temperatura_ambiente)
+        val cBoxTemperaturaSonda: CheckBox = rootView.findViewById(R.id.cBox_temperatura_sonda)
+
+
+
 
         var medicion_start = false
 
@@ -89,6 +102,28 @@ class MedicionesFragment : Fragment() {
                 Toast.makeText(requireContext(), "Medición Detenida", Toast.LENGTH_SHORT).show()
                 txtStatus.text = "Medición Detenida"
 
+                // Hacer todos los CheckBox visibles
+                cBoxHumedad.visibility = View.VISIBLE
+                cBoxPresion.visibility = View.VISIBLE
+                cBoxTDS.visibility = View.VISIBLE
+                cBoxAltitud.visibility = View.VISIBLE
+                cBoxUV.visibility = View.VISIBLE
+                cBoxLight.visibility = View.VISIBLE
+                cBoxHumedadSuelo.visibility = View.VISIBLE
+                cboxTemperaturaAmbiente.visibility = View.VISIBLE
+                cBoxTemperaturaSonda.visibility = View.VISIBLE
+
+                // Hacer todos los TextView visibles
+                rootView.findViewById<TextView>(R.id.Temperatura_sonda).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.Temperatura_ambiente).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.presion).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.humedad).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.altitud).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.uv).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.Light).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.humedad_suelo).visibility = View.VISIBLE
+                rootView.findViewById<TextView>(R.id.TDS).visibility = View.VISIBLE
+
             }
         }
 
@@ -128,16 +163,71 @@ class MedicionesFragment : Fragment() {
                 }
 
                 if (medicion_start == true) {
-                    // Agregar valores a texto de las views
-                    rootView.findViewById<TextView>(R.id.Temperatura_sonda).text = "Temperatura Sonda: " + tempSonda.toString() + " C°"
-                    rootView.findViewById<TextView>(R.id.Temperatura_ambiente).text = "Temperatura Ambiente: " + tempAmbiente.toString() + " C°"
-                    rootView.findViewById<TextView>(R.id.presion).text = "Presión: " + presion.toString() + " hPa"
-                    rootView.findViewById<TextView>(R.id.humedad).text = "Humedad: " + humedadAmbiente.toString() + " %"
-                    rootView.findViewById<TextView>(R.id.altitud).text = "Altitud: " + altitud.toString() + " m"
-                    rootView.findViewById<TextView>(R.id.uv).text = "UV Intensity: " + uv.toString()
-                    rootView.findViewById<TextView>(R.id.Light).text = "Intensidad luminosa: " + lightIntensity.toString() + " lux"
-                    rootView.findViewById<TextView>(R.id.Tenedor).text = "Humedad de suelo: " + humedadSuelo.toString()
-                    rootView.findViewById<TextView>(R.id.TDS).text = "Sólidos disueltos: " + ppm.toString() + " ppm"
+                    cBoxHumedad.visibility = View.GONE
+                    cBoxPresion.visibility = View.GONE
+                    cBoxTDS.visibility = View.GONE
+                    cBoxAltitud.visibility = View.GONE
+                    cBoxUV.visibility = View.GONE
+                    cBoxLight.visibility = View.GONE
+                    cBoxHumedadSuelo.visibility = View.GONE
+                    cboxTemperaturaAmbiente.visibility = View.GONE
+                    cBoxTemperaturaSonda.visibility = View.GONE
+
+
+                    // Verificar cada CheckBox y actualizar el texto de las TextView correspondientes
+                    if (cBoxTemperaturaSonda.isChecked) {
+                        rootView.findViewById<TextView>(R.id.Temperatura_sonda).text = "Temperatura Sonda: " + tempSonda.toString() + " C°"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.Temperatura_sonda).visibility = View.GONE
+                    }
+
+                    if (cboxTemperaturaAmbiente.isChecked) {
+                        rootView.findViewById<TextView>(R.id.Temperatura_ambiente).text = "Temperatura Ambiente: " + tempAmbiente.toString() + " C°"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.Temperatura_ambiente).visibility = View.GONE
+                    }
+
+                    if (cBoxPresion.isChecked) {
+                        rootView.findViewById<TextView>(R.id.presion).text = "Presión: " + presion.toString() + " hPa"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.presion).visibility = View.GONE
+                    }
+
+                    if (cBoxHumedad.isChecked) {
+                        rootView.findViewById<TextView>(R.id.humedad).text = "Humedad: " + humedadAmbiente.toString() + " %"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.humedad).visibility = View.GONE
+                    }
+
+                    if (cBoxAltitud.isChecked) {
+                        rootView.findViewById<TextView>(R.id.altitud).text = "Altitud: " + altitud.toString() + " m"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.altitud).visibility = View.GONE
+                    }
+
+                    if (cBoxUV.isChecked) {
+                        rootView.findViewById<TextView>(R.id.uv).text = "UV Intensity: " + uv.toString()
+                    } else {
+                        rootView.findViewById<TextView>(R.id.uv).visibility = View.GONE
+                    }
+
+                    if (cBoxLight.isChecked) {
+                        rootView.findViewById<TextView>(R.id.Light).text = "Intensidad luminosa: " + lightIntensity.toString() + " lux"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.Light).visibility = View.GONE
+                    }
+
+                    if (cBoxHumedadSuelo.isChecked) {
+                        rootView.findViewById<TextView>(R.id.humedad_suelo).text = "Humedad de suelo: " + humedadSuelo.toString()
+                    } else {
+                        rootView.findViewById<TextView>(R.id.humedad_suelo).visibility = View.GONE
+                    }
+
+                    if (cBoxTDS.isChecked) {
+                        rootView.findViewById<TextView>(R.id.TDS).text = "Sólidos disueltos: " + ppm.toString() + " ppm"
+                    } else {
+                        rootView.findViewById<TextView>(R.id.TDS).visibility = View.GONE
+                    }
 
                 }
 
@@ -153,16 +243,42 @@ class MedicionesFragment : Fragment() {
                     registro.put("nombre", bdNombre)
                     registro.put("fecha", currentDateAndTime)
                     registro.put("lugar", bdLugar)
-                    registro.put("tempSonda", tempSonda.toString())
-                    registro.put("tempAmbiente", tempAmbiente.toString())
-                    registro.put("presion", presion.toString())
-                    registro.put("humedadAmbiente", humedadAmbiente.toString())
-                    registro.put("altitud", altitud.toString())
-                    registro.put("UV", uv.toString())
-                    registro.put("lightIntensity", lightIntensity.toString())
-                    registro.put("humedadSuelo", humedadSuelo.toString())
-                    registro.put("ppm", ppm.toString())
 
+                    if (cBoxTemperaturaSonda.isChecked) {
+                        registro.put("tempSonda", tempSonda.toString())
+                    }
+
+                    if (cboxTemperaturaAmbiente.isChecked) {
+                        registro.put("tempAmbiente", tempAmbiente.toString())
+                    }
+
+                    if (cBoxPresion.isChecked) {
+                        registro.put("presion", presion.toString())
+                    }
+
+                    if (cBoxHumedad.isChecked) {
+                        registro.put("humedadAmbiente", humedadAmbiente.toString())
+                    }
+
+                    if (cBoxAltitud.isChecked) {
+                        registro.put("altitud", altitud.toString())
+                    }
+
+                    if (cBoxUV.isChecked) {
+                        registro.put("UV", uv.toString())
+                    }
+
+                    if (cBoxLight.isChecked) {
+                        registro.put("lightIntensity", lightIntensity.toString())
+                    }
+
+                    if (cBoxHumedadSuelo.isChecked) {
+                        registro.put("humedadSuelo", humedadSuelo.toString())
+                    }
+
+                    if (cBoxTDS.isChecked) {
+                        registro.put("ppm", ppm.toString())
+                    }
                     baseDatos.insert("mediciones", null, registro)
                     txtLugar.text = ""
                     txtNombre.text = ""
