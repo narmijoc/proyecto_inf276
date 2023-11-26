@@ -51,24 +51,36 @@
                     android:id="@+id/btn_conectar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
                     android:text="Conectar dispositivo" />
 
                 <Button
                     android:id="@+id/btn_tomar_medicion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
                     android:text="Tomar Mediciones" />
 
                 <Button
                     android:id="@+id/bt_mediciones_realizadas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
                     android:text="Mediciones Realizadas" />
 
                 <Button
                     android:id="@+id/btnDesconectarDisp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="#EC0F0F"
                     android:text="Desconectar dispositivo" />
 
