@@ -17,6 +17,8 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MedicionesRealizadasFragment : Fragment() {
@@ -37,18 +39,6 @@ class MedicionesRealizadasFragment : Fragment() {
 
         val dbName = "mediciones.db"
         val tableName = "mediciones"
-        val directorioCSV = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-            "MiDirectorioCSV"
-        )
-
-        // Asegúrate de que el directorio exista; si no existe, créalo
-        if (!directorioCSV.exists()) {
-            directorioCSV.mkdirs()
-        }
-
-        val fileName = "archivo.csv"
-        val filePath = File(directorioCSV, fileName).absolutePath
 
         val tableLayout: TableLayout = rootView.findViewById(R.id.tablaMedicioness)
 
@@ -71,7 +61,7 @@ class MedicionesRealizadasFragment : Fragment() {
                             val medicionID = primeraCelda.text.toString() // numero del id del registro
 
                             //mostrar el id al apretar elboton
-                            Toast.makeText(requireContext(), medicionID, Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(requireContext(), medicionID, Toast.LENGTH_SHORT).show()
 
                             //llamar a funcion para exportar csv
                             exportarCSV(medicionID)
@@ -126,13 +116,15 @@ class MedicionesRealizadasFragment : Fragment() {
 
         // Guardar el archivo CSV en la carpeta "archivosCSV" dentro de "Downloads"
         val directorioDownloads = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val carpetaArchivosCSV = File(directorioDownloads, "archivosCSV")
+        val carpetaArchivosCSV = File(directorioDownloads, "ArchivosCSV_Borde_Costero")
 
         if (!carpetaArchivosCSV.exists()) {
             carpetaArchivosCSV.mkdirs()
         }
 
-        val fileName = "medicion_$medicionID.csv"
+        // Obtener la fecha y hora actual
+        val currentDate = SimpleDateFormat("ddMMyyyy_HHmmss", Locale.getDefault()).format(Date())
+        val fileName = "medicion_$medicionID" + "_" + "$currentDate.csv"
         val filePath = File(carpetaArchivosCSV, fileName).absolutePath
 
         try {
@@ -148,42 +140,51 @@ class MedicionesRealizadasFragment : Fragment() {
             csvBuffer.close()
             csvWriter.close()
 
-            Toast.makeText(requireContext(), "Datos exportados a archivo CSV", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Datos exportados correctamente", Toast.LENGTH_SHORT).show()
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(requireContext(), "Error al exportar datos a archivo CSV", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Error al exportar", Toast.LENGTH_SHORT).show()
         }
     }
 
 
 
     fun llenarTabla() {
-        val con = SQLite(requireContext(), "mediciones", null, 1)
-        val baseDatos = con.writableDatabase
 
-        // Modificar la consulta SQL para obtener registros únicos según la columna _medicionID
-        val consulta = "SELECT _medicionID, nombre, fecha, lugar FROM mediciones GROUP BY _medicionID"
-        val fila = baseDatos.rawQuery(consulta, null)
+        try{
 
-        fila.moveToFirst()
+            val con = SQLite(requireContext(), "mediciones", null, 1)
+            val baseDatos = con.writableDatabase
 
-        do {
-            val registro = LayoutInflater.from(requireContext())
-                .inflate(R.layout.item_table_layout_mediciones, null, false)
+            // Modificar la consulta SQL para obtener registros únicos según la columna _medicionID
+            val consulta = "SELECT _medicionID, nombre, fecha, lugar FROM mediciones GROUP BY _medicionID"
+            val fila = baseDatos.rawQuery(consulta, null)
 
-            val tvId = registro.findViewById<View>(R.id.tvId) as TextView
-            val tvNombre = registro.findViewById<View>(R.id.tvNombre) as TextView
-            val tvFecha = registro.findViewById<View>(R.id.tvFecha) as TextView
-            val tvLugar = registro.findViewById<View>(R.id.tvLugar) as TextView
+            fila.moveToFirst()
 
-            //colocar de bd
-            tvId.setText(fila.getString((0)).toString())
-            tvNombre.setText(fila.getString(1))
-            tvFecha.setText(fila.getString(2))
-            tvLugar.setText(fila.getString(3))
+            do {
+                val registro = LayoutInflater.from(requireContext())
+                    .inflate(R.layout.item_table_layout_mediciones, null, false)
 
-            tablaMediciones?.addView(registro)
-        } while (fila.moveToNext())
+                val tvId = registro.findViewById<View>(R.id.tvId) as TextView
+                val tvNombre = registro.findViewById<View>(R.id.tvNombre) as TextView
+                val tvFecha = registro.findViewById<View>(R.id.tvFecha) as TextView
+                val tvLugar = registro.findViewById<View>(R.id.tvLugar) as TextView
+
+                //colocar de bd
+                tvId.setText(fila.getString((0)).toString())
+                tvNombre.setText(fila.getString(1))
+                tvFecha.setText(fila.getString(2))
+                tvLugar.setText(fila.getString(3))
+
+                tablaMediciones?.addView(registro)
+            } while (fila.moveToNext())
+        }catch (e: Exception) {
+            //Toast.makeText(context, "Aun nno se han realizado mediciones", Toast.LENGTH_SHORT).show()
+            val medHeader = rootView.findViewById<TextView>(R.id.mediciones_header)
+            medHeader.text = "Aún no se han realizado mediciones"
+        }
+
     }
 
 

@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //Cambiar de vistas segun los botones
         //Boton Conectar
         binding.btnConectar.setOnClickListener {
-            Toast.makeText(applicationContext, "BotonConectar", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, "BotonConectar", Toast.LENGTH_SHORT).show()
 
             showCustomDialogBox()
         }
@@ -115,15 +115,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //establecer estado inicial
         establecerEstadoConexion()
 
-        //Botontes para enviar texto, no serán usados
-        //binding.buttonSend.setOnClickListener {
-        //    blue.bluTx(binding.edtTx.text.toString())
-        //}
-
-        //binding.buttonSend.setOnLongClickListener {
-        //    blue.closeConnection()
-        //true
-        //}
 
     }
 
@@ -191,7 +182,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     override fun onConnectState(state: BluJhr.Connected) {
                         when (state) {
                             BluJhr.Connected.True -> {
-                                Toast.makeText(applicationContext, "True", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Conectado", Toast.LENGTH_SHORT).show()
                                 listaDispositivosBluetooth.visibility = View.GONE
 
                                 //hacer visible el boton desconectar
@@ -209,7 +200,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             }
 
                             BluJhr.Connected.Pending -> {
-                                Toast.makeText(applicationContext, "Pending", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Conectando...", Toast.LENGTH_SHORT).show()
                                 //establecer estado
                                 estadoConexionBlue = false
                                 establecerEstadoConexion()
@@ -219,7 +210,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             }
 
                             BluJhr.Connected.False -> {
-                                Toast.makeText(applicationContext, "False", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                                 //establecer estado
                                 estadoConexionBlue = false
                                 establecerEstadoConexion()
@@ -231,7 +222,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 //establecer estado
                                 estadoConexionBlue = false
                                 establecerEstadoConexion()
-                                Toast.makeText(applicationContext, "Disconnect", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Desconectado", Toast.LENGTH_SHORT).show()
                                 listaDispositivosBluetooth.visibility = View.VISIBLE
                                 //viewConn.visibility = View.GONE
 
@@ -258,9 +249,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.nav_item_one -> Toast.makeText(this, "Item 1", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this, "Item 2", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three -> Toast.makeText(this, "Item 3", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_one -> {
+                val intent = Intent(this, configuracion::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_item_two -> {
+                val intent = Intent(this, informacion::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_item_three ->{
+                val intent = Intent(this, ayuda::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show()
+            }
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
