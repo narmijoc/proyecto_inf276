@@ -20,7 +20,7 @@
 
         <TextView
             android:textSize="18sp"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:text="Dispositivos Vinculados"
             android:gravity="center"

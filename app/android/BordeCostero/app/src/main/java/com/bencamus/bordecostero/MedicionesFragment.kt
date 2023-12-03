@@ -81,16 +81,21 @@ class MedicionesFragment : Fragment() {
                 if (txtNombre.text.toString().isEmpty() == false) {
                     bdNombre = txtNombre.text.toString()
                     bdLugar = txtLugar.text.toString()
-                } else {
-                    Toast.makeText(requireContext(), "Debe ingresad nombre", Toast.LENGTH_SHORT).show()
-                }
-                //establecer como true
-                medicion_start = true
-                txtStatus.text = "Realizando Medición..."
-                Toast.makeText(requireContext(), "Iniciando Medición", Toast.LENGTH_SHORT).show()
 
-                //obtener valor siguiente de la tabla _medicionID
-                bdMedicionID = establecerNumeroMedicion()
+                    //establecer como true
+                    medicion_start = true
+                    txtStatus.text = "Realizando Medición..."
+                    Toast.makeText(requireContext(), "Iniciando Medición", Toast.LENGTH_SHORT).show()
+
+                    //obtener valor siguiente de la tabla _medicionID
+                    bdMedicionID = establecerNumeroMedicion()
+
+
+
+                } else {
+                    Toast.makeText(requireContext(), "Debe ingresar nombre", Toast.LENGTH_SHORT).show()
+                }
+
             }
 
         }
@@ -280,8 +285,8 @@ class MedicionesFragment : Fragment() {
                         registro.put("ppm", ppm.toString())
                     }
                     baseDatos.insert("mediciones", null, registro)
-                    txtLugar.text = ""
-                    txtNombre.text = ""
+                    //txtLugar.text = ""
+                    //txtNombre.text = ""
 
                 }
             }
